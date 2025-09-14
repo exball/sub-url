@@ -1,0 +1,17 @@
+# Nuxt 3 SPA routing under subpath /nautica
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /nautica/
+  # Do not rewrite existing files or directories
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  # Send all other requests to SPA entry
+  RewriteRule . index.html [L]
+</IfModule>
+
+# Optional: force HTTPS (uncomment if needed)
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
